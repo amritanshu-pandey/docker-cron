@@ -41,7 +41,8 @@ stages:
       clean: true
     - script: docker build -t amritanshu16/docker-cron:ci .
       displayName: build docker image
-    - script: docker run -t --rm amritanshu16/docker-cron:ci
+    - script: |
+        docker run -t --rm amritanshu16/docker-cron:ci ls /cron-scripts
       displayName: Test docker image
     - script: |
         docker image save amritanshu16/docker-cron:ci -o docker-image.tar.gz
